@@ -2,6 +2,7 @@ import sys
 import logging
 import os
 from datetime import datetime
+from Source.logger import logging
 
 # -------------------- LOGGER SETUP --------------------
 LOG_FILE = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
@@ -44,5 +45,7 @@ if __name__ == "__main__":
         a = 1 / 0
     except Exception as e:
         error = CustomException(e, sys)
-        logging.error(error)
+        logging.error(str(error))
+        logging.shutdown()
+        print(f"Log saved to: {LOG_FILE_PATH}")
         raise error
